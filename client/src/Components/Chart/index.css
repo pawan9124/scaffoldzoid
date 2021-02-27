@@ -1,0 +1,25 @@
+.c9dpaye700-canary36 {
+  box-shadow: none !important;
+}
+.chart_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 3%;
+}
+.chart__section_heading {
+}
+.chart_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.chart_action_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.chart_action_buttons > * {
+  cursor: pointer;
+}

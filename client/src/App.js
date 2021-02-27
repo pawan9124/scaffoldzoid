@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -7,7 +8,8 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import jwt_decode from "jwt-decode";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
-// import Profile from './Components/Profile/Profile';
+import Profile from "./Components/Profile";
+import Chart from "./Components/Chart";
 
 function App() {
   useEffect(() => {
@@ -42,12 +44,12 @@ function App() {
             <Route path="/register">
               <Register />
             </Route>
-            <Route path="/register">
-              <Register />
-            </Route>
-            {/* <Route path="/profile/:id">
+            <Route path="/profile/:id">
               <Profile />
-            </Route> */}
+            </Route>
+            <Route path="/chart/:id">
+              <Chart />
+            </Route>
             <Route path="/">
               {" "}
               <Login />

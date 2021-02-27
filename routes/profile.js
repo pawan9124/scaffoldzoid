@@ -49,8 +49,11 @@ router.post(
       let image = req.file ? req.file.path : "";
       console.log("imagearr", image);
       const newProfile = { ...req.body, avatar: image };
-      console.log("newProfile------>", newProfile);
-      const saveResponse = await new Profile(newProfile).save();
+      const saveResponse = await Profile.findOneAndUpdate(
+        { user: newProfile.user },
+        { $set: newProfile },
+        { sort: { points: 1 }, upsert: true, returnNewDocument: true }
+      );
       res.status(201).json(saveResponse);
     } catch (error) {
       console.log("Error", error);
@@ -87,10 +90,9 @@ router.get(
 router.get("/getSingleProfile", async (req, res) => {
   try {
     console.log("req=x=x=x=x=x=x=x=,", req.query);
-    const singleProfile = await Profile.findById(req.query.id).populate(
-      "user",
-      ["username"]
-    );
+    const singleProfile = await Profile.find({
+      user: req.query.id,
+    }).populate("user", ["username"]);
     res.status(200).json(singleProfile);
   } catch (error) {
     res.status(500).json(error);

@@ -77,7 +77,7 @@ router.post("/login", (req, res) => {
         if (isMatch) {
           const payload = {
             id: user.id,
-            name: user.name,
+            username: user.username,
             isSeller: user.isSeller,
           };
 

@@ -49,7 +49,7 @@ export const loginUser = (userData, history) => (dispatch) => {
         dispatch(setCurrentUser(decoded));
         /* Checking if the user is seller or not */
         if (decoded.isSeller) {
-          history.push("/profile");
+          history.push(`/profile/${decoded.id}`);
         } else {
           history.push("/sellerlist");
         }
