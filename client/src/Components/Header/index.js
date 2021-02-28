@@ -42,8 +42,10 @@ function Header(props) {
     const response = await axios.get("/api/products/search", {
       params: { text: e.target.value },
     });
-    "HEADER &&&$$$$ IS THE RESPONSE------------------------------------------->",
-      response;
+    console.log(
+      "HEADER &&&$$$$ IS THE RESPONSE------------------------------------------->",
+      response
+    );
     if (response.data.length > 0) {
       document.getElementById("autocomplete").style.display = "block";
       setAutoComplete(response.data);
