@@ -21,12 +21,10 @@ var storage = new CloudinaryStorage({
   cloudinary: v2,
   params: {
     folder: (req, file) => {
-      console.log("FIRLENAME", file);
       return "scaffoldzoid";
     },
     format: async (req, file) => {},
     public_id: (req, file) => {
-      console.log("PUBLICDID", file);
       return `${file.originalname}-${new Date()}`;
     },
   },
@@ -44,10 +42,8 @@ router.post(
   upload.single("avatar"),
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
-    console.log("REQEES", req.file);
     try {
       let image = req.file ? req.file.path : "";
-      console.log("imagearr", image);
       const newProfile = { ...req.body, avatar: image };
       const saveResponse = await Profile.findOneAndUpdate(
         { user: newProfile.user },
@@ -56,7 +52,7 @@ router.post(
       );
       res.status(201).json(saveResponse);
     } catch (error) {
-      console.log("Error", error);
+      res.status(500).json(error);
     }
   }
 );
@@ -73,7 +69,6 @@ router.get(
       const allProfiles = await Profile.find({}).populate("user", ["username"]);
       res.status(200).json(allProfiles);
     } catch (error) {
-      console.log("Error", error);
       res.status(500).json(error);
     }
   }
@@ -109,7 +104,6 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     try {
-      console.log("params", req.query);
       const response = await Profile.find({
         $text: { $search: req.query.text },
       });

@@ -23,3 +23,8 @@
 .chart_action_buttons > * {
   cursor: pointer;
 }
+.btn-adjust {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

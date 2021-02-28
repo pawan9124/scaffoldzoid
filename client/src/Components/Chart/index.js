@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Button from "../Reusable/Button";
 import { withRouter } from "react-router-dom";
-import "./index.css";
+import "./style.css";
 import MangeOrange from "../MangeOrange";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchRateChart } from "../../actions/rateChartActions";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RateGrid from "../RateGrid";
 
 /* Handling to open the modal */
@@ -16,6 +17,7 @@ function Chart(props) {
   const dispatchProps = useDispatch();
 
   const allChartRate = useSelector((state) => state.rates.allRates);
+  const userDetails = useSelector((state) => state.auth.user);
 
   /* Get the details of the chart from the backend */
   useEffect(() => {
@@ -25,20 +27,33 @@ function Chart(props) {
   return (
     <div className="chart_section">
       <div className="chart__section_heading">
-        <h3>Manage your rate charts</h3>
-        <p>
-          Manage your charts by adding, editing the existing ones and remove the
-          types of oranges that are listed for the customers{" "}
-        </p>
+        {props.match.path.indexOf("profile") === -1 && (
+          <div>
+            <h3>Hello, {userDetails?.username}! </h3>
+            <p>
+              Manage your charts by adding, editing the existing ones and remove
+              the types of oranges that are listed for the customers{" "}
+            </p>
+          </div>
+        )}
+        {!userDetails.isSeller && (
+          <p>
+            List of every type of best quality oranges available from this
+            seller, order your favorite one.
+          </p>
+        )}
       </div>
-      <div className="chart_button">
-        <Button
-          type="submit"
-          onClick={(e) => setIsOpen(true)}
-          buttonClass="default__button profile_button"
-          buttonLabel="Add Type"
-        />
-      </div>
+      {props.match.path.indexOf("profile") === -1 && (
+        <div className="chart_button">
+          <Button
+            type="submit"
+            onClick={(e) => setIsOpen(true)}
+            buttonClass="default__button profile_button btn-adjust"
+            buttonLabel="Add Type"
+            icon={<AddCircleIcon />}
+          />
+        </div>
+      )}
       <div className="chat_grid">
         <RateGrid rows={allChartRate} />
       </div>

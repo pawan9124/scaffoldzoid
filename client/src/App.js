@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -19,6 +19,9 @@ if (localStorage.jwtToken) {
   //Decode token and get user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
 
+  //set the token if localstorage present
+  setAuthToken(localStorage.jwtToken);
+
   //set user and isAuthenticated to check if the user is authenticated accessing the priavate route
   //
   store.dispatch(setCurrentUser(decoded));
@@ -35,16 +38,21 @@ if (localStorage.jwtToken) {
 
 function App() {
   return (
-    //BEM convention
     <Provider store={store}>
       <Router>
         <div className="app">
           <Switch>
-            <Route path="/register" component={Register} />
+            <Route exact path="/register" component={Register} />
+          </Switch>
+          <Switch>
             <PrivateRoute exact path="/profile/:id" comp={Profile} />
+          </Switch>
+          <Switch>
             <PrivateRoute exact path="/chart/:id" comp={Chart} />
             <PrivateRoute exact path="/sellers" comp={SellerList} />
-            <Route path="/" component={Login} />
+          </Switch>
+          <Switch>
+            <Route exact path="/" component={Login} />
           </Switch>
         </div>
       </Router>

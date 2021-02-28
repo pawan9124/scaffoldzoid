@@ -4,10 +4,6 @@ import axios from "../axios";
 
 //Profile  user
 export const saveProfile = (userData, history) => (dispatch) => {
-  console.log("UserData----->", userData);
-  for (var pair of userData.entries()) {
-    console.log(pair[0] + ", " + pair[1]);
-  }
   try {
     axios
       .post("/api/profiles/create", userData)
@@ -18,7 +14,6 @@ export const saveProfile = (userData, history) => (dispatch) => {
         });
       })
       .catch((error) => {
-        console.log("error", error);
         dispatch({
           type: "GET_ERRORS",
           payload: error,
@@ -39,7 +34,6 @@ export const fetchProfileById = (id) => async (dispatch) => {
         id,
       },
     });
-    console.log("result", result);
     dispatch({
       type: "SET_CURRENT_PROFILE",
       payload: result.data,
@@ -55,7 +49,6 @@ export const fetchProfileById = (id) => async (dispatch) => {
 export const fetchAllProfiles = () => async (dispatch) => {
   try {
     const result = await axios.get("/api/profiles/getAllProfiles");
-    console.log("result", result);
     dispatch({
       type: "SET_ALL_PROFILES",
       payload: result.data,

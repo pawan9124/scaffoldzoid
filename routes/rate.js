@@ -6,6 +6,20 @@ import passport from "passport";
 const router = express.Router();
 
 /* 
+  Support function to find all the current rates
+*/
+const findUpatedRate = (userId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const currentRates = await Rate.find({ user: userId });
+      resolve(currentRates);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+/* 
     @route post api/rate/create
     @access private
 */
@@ -14,8 +28,6 @@ router.post(
   "/create",
   // passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    const errors = {};
-    console.log("responseherer=--------", req.body);
     try {
       const rate = new Rate({
         user: req.body.user,
@@ -24,7 +36,8 @@ router.post(
       });
       rate
         .save()
-        .then((rateDetail) => {
+        .then(async () => {
+          const rateDetail = await findUpatedRate(req.body.user);
           res.status(200).json(rateDetail);
         })
         .catch((error) => {
@@ -55,15 +68,14 @@ router.put(
         { _id: rateObj.id },
         { $set: { type: rateObj.type, rate: rateObj.rate } }
       )
-        .then((rateDetail) => {
+        .then(async () => {
+          const rateDetail = await findUpatedRate(req.body.user);
           res.status(200).json(rateDetail);
         })
         .catch((error) => {
-          console.log("ERROR", error);
           res.status(500).json(error);
         });
     } catch (error) {
-      console.log("ERROR", error);
       res.status(500).json(error);
     }
   }
@@ -103,8 +115,9 @@ router.delete(
   (req, res) => {
     try {
       Rate.deleteOne({ _id: req.query.id })
-        .then((rates) => {
-          res.status(200).json(rates);
+        .then(async () => {
+          const rateDetail = await findUpatedRate(req.query.user);
+          res.status(200).json(rateDetail);
         })
         .catch((error) => {
           res.status(500).json(error);

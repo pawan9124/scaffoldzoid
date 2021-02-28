@@ -1,7 +1,6 @@
 import Axios from "../axios";
 
 const setAuthToken = (token) => {
-  console.log("TOken====>", token);
   if (token) {
     //Apply token to every request
     Axios.defaults.headers.common["Authorization"] = token;

@@ -9,7 +9,7 @@ export const addRate = (userData, history) => (dispatch) => {
       .post("/api/rates/create", userData)
       .then((res) => {
         dispatch({
-          type: "SET_CURRENT_RATE",
+          type: "SET_ALL_RATES",
           payload: res.data,
         });
       })
@@ -28,7 +28,6 @@ export const addRate = (userData, history) => (dispatch) => {
 };
 
 export const fetchRateChart = (user) => async (dispatch) => {
-  console.log("IDDD_---------------", user);
   try {
     const result = await axios.get("/api/rates/get", {
       params: {
@@ -48,11 +47,10 @@ export const fetchRateChart = (user) => async (dispatch) => {
 };
 
 export const updateRate = (updateData) => async (dispatch) => {
-  console.log("IDDD_---------------", updateData);
   try {
     const result = await axios.put("/api/rates/update", updateData);
     dispatch({
-      type: "SET_CURRENT_RATE",
+      type: "SET_ALL_RATES",
       payload: result.data,
     });
   } catch (error) {
@@ -63,16 +61,16 @@ export const updateRate = (updateData) => async (dispatch) => {
   }
 };
 
-export const deleteRate = (id) => async (dispatch) => {
-  console.log("IDDD_---------------", id);
+export const deleteRate = (id, user) => async (dispatch) => {
   try {
     const result = await axios.delete("/api/rates/delete", {
       params: {
         id,
+        user,
       },
     });
     dispatch({
-      type: "SET_CURRENT_RATE",
+      type: "SET_ALL_RATES",
       payload: result.data,
     });
   } catch (error) {

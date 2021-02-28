@@ -31,23 +31,28 @@ export default function SimpleModal(props) {
 
   const body = (
     <div className={`${classes.paper} modal_body_position`}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
+      <h2 id="simple-modal-title">
+        {props.eventType === "add" ? "Add" : "Edit"} Orange Types
+      </h2>
       <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+        {props.eventType === "add" ? "Add" : "Edit"} orange types to your
+        inventory and provide various flavors to the user.
       </p>
       <div>{props.children}</div>
-      <Button
-        type="submit"
-        onClick={(e) => handleClose()}
-        buttonClass="default__button profile_button"
-        buttonLabel="close"
-      />
-      <Button
-        type="submit"
-        onClick={(e) => props.handleOrangeEvent()}
-        buttonClass="default__button profile_button"
-        buttonLabel="save"
-      />
+      <div className="modal_body">
+        <Button
+          type="submit"
+          onClick={(e) => handleClose()}
+          buttonClass="default__button profile_button"
+          buttonLabel="Close"
+        />
+        <Button
+          type="submit"
+          onClick={(e) => props.handleOrangeEvent()}
+          buttonClass="default__button profile_button"
+          buttonLabel="Save"
+        />
+      </div>
     </div>
   );
 

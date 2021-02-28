@@ -7,7 +7,7 @@ import Chart from "../Chart";
 import validator from "validator";
 import ImageUploader from "../Reusable/ImageUploader";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { saveProfile, fetchProfileById } from "../../actions/profileActions";
 import "./style.css";
 
@@ -17,24 +17,21 @@ function Profile(props) {
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState({});
 
-  /* Get the user details from the redux store */
+  /* Get the user details from the redux store for seller usage*/
   const userDetails = useSelector((state) => {
-    console.log("User", state);
     return state.auth.user;
   });
-  /* Get the current profile details from the redux store */
+  /* Get the current profile details from the redux store  for both seller and customer (get name of seller)*/
   const currentProfile = useSelector((state) => state?.profile?.profiles[0]);
-
   const dispatchProps = useDispatch();
   const history = useHistory();
-  console.log("props", props.match.params.id);
 
   /* use effect to fetch the user profile information in redux store*/
   useEffect(() => {
     dispatchProps(fetchProfileById(props.match.params.id));
   }, [props.match.params.id]);
 
-  /* Use effect to set the current profile to the fields */
+  /* Use effect to set the current profile to the fields (image,description) */
   useEffect(() => {
     if (currentProfile && Object.keys(currentProfile).length > 0) {
       setImageFiles([{ imagePreviewUrl: currentProfile.avatar }]);
@@ -64,7 +61,9 @@ function Profile(props) {
   return (
     <div className="profile_section">
       {userDetails?.isSeller && <h5>Hello, {userDetails?.username}</h5>}
-      {!userDetails?.isSeller && <h5>Mr.{userDetails?.username}</h5>}
+      {!userDetails?.isSeller && (
+        <h4>Mr/Ms. {currentProfile?.user?.username}</h4>
+      )}
       {/* Profile about section */}
       {userDetails?.isSeller && (
         <div className="profile_name_section">
@@ -83,22 +82,25 @@ function Profile(props) {
             src={imageFiles[0]?.imagePreviewUrl}
             className="profile_image"
           />
-          <ImageUploader
-            setSentImageFiles={setSentImageFiles}
-            setImageFiles={setImageFiles}
-          />
+          {/* Seller to upload image */}
+          {userDetails?.isSeller && (
+            <ImageUploader
+              setSentImageFiles={setSentImageFiles}
+              setImageFiles={setImageFiles}
+            />
+          )}
         </div>
         <div className="profile_description_section">
           <TextField
             id="outlined-basic"
-            label={description ? description : "Description"}
+            label={description ? "" : "Description"}
             variant="outlined"
             multiline
             rows={5}
             fullWidth={true}
             defaultValue={description}
             InputProps={{
-              readOnly: false,
+              readOnly: !userDetails?.isSeller,
             }}
             onChange={(e) => setDescription(e.target.value)}
           />

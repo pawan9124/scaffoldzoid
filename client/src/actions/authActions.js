@@ -37,6 +37,7 @@ export const loginUser = (userData, history) => (dispatch) => {
         //Save to localStorage
         const { token } = res.data;
         localStorage.setItem("jwtToken", token);
+        setAuthToken(token);
 
         //Decoded the token to get the user data
         const decoded = jwt_decode(token);
@@ -49,7 +50,7 @@ export const loginUser = (userData, history) => (dispatch) => {
             history.push(`/profile/${decoded.id}`);
           });
         } else {
-          history.push("/sellerlist");
+          history.push("/sellers");
         }
       })
       .catch((err) => {

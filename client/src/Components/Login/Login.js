@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { Link, useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import validator from "validator";
 import { loginUser } from "../../actions/authActions";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
-function Login(props) {
+function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
-  const signIn = async (e) => {
+
+  /* Hooks to dispatch the action */
+  const dispatchProps = useDispatch();
+
+  /* Login function dispatch action */
+  const signIn = (e) => {
     const tempErrors = {};
     e.preventDefault();
     if (validator.isEmpty(email) || !validator.isEmail(email)) {
@@ -27,17 +31,11 @@ function Login(props) {
         email,
         password,
       };
-      await props.loginUser(loginObj, props.history);
+      dispatchProps(loginUser(loginObj, history));
     } else {
       setErrors(tempErrors);
     }
-    //Some fancy firebase login shitttt......
   };
-  //   useEffect(() => {
-  //     if (Object.keys(props.errors).length > 0) {
-  //       setErrors(props.errors);
-  //     }
-  //   }, [props]);
 
   const register = (e) => {
     e.preventDefault();
@@ -95,15 +93,4 @@ function Login(props) {
   );
 }
 
-// Login.propTypes = {
-//   loginUser: PropTypes.func.isRequired,
-//   user: PropTypes.object.isRequired,
-//   errors: PropTypes.object.isRequired,
-// };
-
-const mapStateToProps = (state) => ({
-  user: state.user,
-  errors: state.errors,
-});
-
-export default connect(mapStateToProps, { loginUser })(withRouter(Login));
+export default withRouter(Login);

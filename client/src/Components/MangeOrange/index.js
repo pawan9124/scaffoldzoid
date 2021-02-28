@@ -16,19 +16,19 @@ const ModalBody = (props) => {
 
   /* Set the current data for the modal */
   useEffect(() => {
-    setOrangeRate(props?.editData?.rate);
-    setOrangeType(props?.editData?.type);
+    if (props.eventType === "edit") {
+      setOrangeRate(props?.editData?.rate);
+      setOrangeType(props?.editData?.type);
+    }
   }, [props.editData]);
-  console.log("porps.=====================", props);
 
   const handleOrangeEvent = () => {
-    console.log("props.eventType", props.eventType);
     const tempErrors = {};
-    if (validator.isEmpty(orangeType)) {
+    if (orangeType === undefined || validator.isEmpty(orangeType)) {
       tempErrors.orangeType = "Please enter orange type";
     }
-    if (validator.isEmpty(orangeRate)) {
-      tempErrors.orangeType = "Please enter orange rate";
+    if (orangeRate === undefined || validator.isEmpty(orangeRate)) {
+      tempErrors.orangeRate = "Please enter orange rate";
     }
     if (Object.keys(tempErrors).length === 0) {
       /* Process for the add type */
@@ -43,21 +43,23 @@ const ModalBody = (props) => {
         /* process for the edit type */
         const updateData = {
           id: props.editData._id,
+          user: userDetail.id,
           type: orangeType,
           rate: orangeRate,
         };
         dispatchProps(updateRate(updateData));
       }
+      props.setIsOpen(false);
     } else {
       setErrors(tempErrors);
     }
   };
-
   return (
     <Modal
       isOpen={props.isOpen}
       setIsOpen={props.setIsOpen}
       handleOrangeEvent={handleOrangeEvent}
+      eventType={props.eventType}
     >
       <div>
         <InputBox
@@ -69,6 +71,8 @@ const ModalBody = (props) => {
           label="Orange Type"
           errors={errors.orangeType}
         />
+
+        <br></br>
         <InputBox
           type="number"
           value={orangeRate}

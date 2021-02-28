@@ -32,7 +32,7 @@ router.post("/register", (req, res) => {
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) {
-              console.log(err);
+              res.status(500).json(err);
             }
             newUser.password = hash;
             newUser
@@ -42,7 +42,6 @@ router.post("/register", (req, res) => {
               })
               .catch((error) => {
                 res.status(500).json(error);
-                throw new Error(error);
               });
           });
         });
