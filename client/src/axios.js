@@ -1,7 +1,8 @@
 import axios from "axios";
-
-const instance = axios.create({
-  baseURL: "http://localhost:8000", // THE API {Cloud function url} URL
-});
-
-export default instance;
+axios.defaults.baseURL = "http://localhost:8000/";
+if (localStorage.jwtToken) {
+  axios.defaults.headers.common["Authorization"] = localStorage.jwtToken;
+} else {
+  delete axios.defaults.headers.common["Authorization"];
+}
+export default axios;

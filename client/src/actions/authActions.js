@@ -10,7 +10,6 @@ export const registerUser = (userData, history) => (dispatch) => {
     axios
       .post("/api/userAuth/register", userData)
       .then((res) => {
-        console.log("RSPOSE", res);
         document.getElementById("registerMessage").innerHTML =
           "User Registered Successfully!";
         dispatch(loginUser(userData, history));
@@ -31,7 +30,6 @@ export const registerUser = (userData, history) => (dispatch) => {
 
 //Login - Get the User token and save in the local storage
 export const loginUser = (userData, history) => (dispatch) => {
-  console.log("Login user here");
   try {
     axios
       .post("/api/userAuth/login", userData)
@@ -39,23 +37,22 @@ export const loginUser = (userData, history) => (dispatch) => {
         //Save to localStorage
         const { token } = res.data;
         localStorage.setItem("jwtToken", token);
-        setAuthToken(token);
 
         //Decoded the token to get the user data
         const decoded = jwt_decode(token);
-        console.log("docoded===========>", decoded);
 
         //Set the user
         dispatch(setCurrentUser(decoded));
         /* Checking if the user is seller or not */
         if (decoded.isSeller) {
-          history.push(`/profile/${decoded.id}`);
+          setTimeout(() => {
+            history.push(`/profile/${decoded.id}`);
+          });
         } else {
           history.push("/sellerlist");
         }
       })
       .catch((err) => {
-        console.log("ERORR", err);
         dispatch({
           type: "GET_ERRORS",
           payload: err.response.data,
@@ -79,8 +76,6 @@ export const setCurrentUser = (decoded) => {
 export const logoutUser = () => (dispatch) => {
   //Remove the current user from localstorga
   localStorage.removeItem("jwtToken");
-  //Remvoe auth header for future requests
-  setAuthToken(false);
   //Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };

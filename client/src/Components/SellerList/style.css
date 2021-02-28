@@ -1,0 +1,7 @@
+.seller_section {
+  margin: 2%;
+}
+.seller_list {
+  display: flex;
+  flex-wrap: wrap;
+}

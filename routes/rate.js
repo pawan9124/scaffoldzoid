@@ -43,7 +43,7 @@ router.post(
 
 router.put(
   "/update",
-  // passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     try {
       const rateObj = {
@@ -76,9 +76,8 @@ router.put(
 
 router.get(
   "/get",
-  // passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log("REQUEST----------------", req.query);
     try {
       Rate.find({ user: req.query.user })
         .then((rates) => {
@@ -100,9 +99,8 @@ router.get(
 
 router.delete(
   "/delete",
-  // passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log("REQUEST----------------", req.query);
     try {
       Rate.deleteOne({ _id: req.query.id })
         .then((rates) => {

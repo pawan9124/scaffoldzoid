@@ -42,7 +42,7 @@ const upload = multer({ storage });
 router.post(
   "/create",
   upload.single("avatar"),
-  //   passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     console.log("REQEES", req.file);
     try {
@@ -62,7 +62,7 @@ router.post(
 );
 /*
   @routes api/profile/getAllProfiles
-  @public
+  @access private
  */
 
 router.get(
@@ -71,10 +71,6 @@ router.get(
   async (req, res) => {
     try {
       const allProfiles = await Profile.find({}).populate("user", ["username"]);
-      console.log(
-        "HERE INSIDE THE TECH OF THE TECHH____________________---------------------------",
-        allProfiles
-      );
       res.status(200).json(allProfiles);
     } catch (error) {
       console.log("Error", error);
@@ -85,34 +81,43 @@ router.get(
 
 /* 
   @routes api/products/getSingleProfile
-  @public
+   @access private
 */
-router.get("/getSingleProfile", async (req, res) => {
-  try {
-    console.log("req=x=x=x=x=x=x=x=,", req.query);
-    const singleProfile = await Profile.find({
-      user: req.query.id,
-    }).populate("user", ["username"]);
-    res.status(200).json(singleProfile);
-  } catch (error) {
-    res.status(500).json(error);
+router.get(
+  "/getSingleProfile",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    try {
+      const singleProfile = await Profile.find({
+        user: req.query.id,
+      }).populate("user", ["username"]);
+      res.status(200).json(singleProfile);
+    } catch (error) {
+      res.status(500).json(error);
+    }
   }
-});
+);
 
 /* 
-  @routes api/products/search
-  @public
+  @routes api/profile/search
+  @access private
 
 */
 
-router.get("/search", async (req, res) => {
-  try {
-    console.log("params", req.query);
-    const response = await Product.find({ $text: { $search: req.query.text } });
-    res.status(200).json(response);
-  } catch (error) {
-    res.statu(500).json(error);
+router.get(
+  "/search",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    try {
+      console.log("params", req.query);
+      const response = await Profile.find({
+        $text: { $search: req.query.text },
+      });
+      res.status(200).json(response);
+    } catch (error) {
+      res.statu(500).json(error);
+    }
   }
-});
+);
 
 export default router;

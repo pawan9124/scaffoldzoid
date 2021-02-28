@@ -1,5 +1,6 @@
 const initialState = {
   profiles: {},
+  allProfiles: [],
 };
 
 export default function (state = initialState, action) {
@@ -8,6 +9,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         profiles: action.payload,
+      };
+    case "SET_ALL_PROFILES":
+      return {
+        ...state,
+        allProfiles: action.payload,
       };
     default:
       return state;

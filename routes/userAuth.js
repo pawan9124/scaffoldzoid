@@ -14,7 +14,6 @@ const router = express.Router();
 
 router.post("/register", (req, res) => {
   const errors = {};
-  console.log("responseherer=--------", req.body);
   try {
     User.findOne({ email: req.body.email }).then((user) => {
       if (user) {

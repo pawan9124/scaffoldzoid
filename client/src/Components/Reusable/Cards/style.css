@@ -1,0 +1,23 @@
+.card_style {
+  margin: 5px;
+}
+.card_image {
+  height: 75px !important;
+  width: 75px !important;
+}
+a {
+  text-decoration: none;
+}
+
+.card_section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.card_image_section {
+  flex: 1;
+}
+.card_details {
+  flex: 2;
+}

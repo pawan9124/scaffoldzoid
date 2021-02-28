@@ -33,7 +33,6 @@ export const saveProfile = (userData, history) => (dispatch) => {
 };
 
 export const fetchProfileById = (id) => async (dispatch) => {
-  console.log("IDDID", id);
   try {
     const result = await axios.get("/api/profiles/getSingleProfile", {
       params: {
@@ -43,6 +42,22 @@ export const fetchProfileById = (id) => async (dispatch) => {
     console.log("result", result);
     dispatch({
       type: "SET_CURRENT_PROFILE",
+      payload: result.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "GET_ERRORS",
+      payload: error,
+    });
+  }
+};
+
+export const fetchAllProfiles = () => async (dispatch) => {
+  try {
+    const result = await axios.get("/api/profiles/getAllProfiles");
+    console.log("result", result);
+    dispatch({
+      type: "SET_ALL_PROFILES",
       payload: result.data,
     });
   } catch (error) {

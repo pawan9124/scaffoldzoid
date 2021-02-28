@@ -10,50 +10,41 @@ import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import Profile from "./Components/Profile";
 import Chart from "./Components/Chart";
+import SellerList from "./Components/SellerList";
+import PrivateRoute from "./validations/PrivateRoute";
+import NotFound from "./Components/Reusable/NotFound";
+
+//This check runs before the useEffect or compoent did mount to set token and currentUser store contains isAuthenticated to check the private route
+if (localStorage.jwtToken) {
+  //Decode token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
+
+  //set user and isAuthenticated to check if the user is authenticated accessing the priavate route
+  //
+  store.dispatch(setCurrentUser(decoded));
+
+  //check if the token expired
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    //logout user
+    store.dispatch(logoutUser());
+    //Redirect to login
+    window.location.href = "/";
+  }
+}
 
 function App() {
-  useEffect(() => {
-    //check the authetication of the user
-    if (localStorage.jwtToken) {
-      setAuthToken(localStorage.jwtToken);
-      //Decode token and get user info and exp
-      const decoded = jwt_decode(localStorage.jwtToken);
-
-      //set user and isAuthenticated
-      store.dispatch(setCurrentUser(decoded));
-
-      //check if the token expired
-      const currentTime = Date.now() / 1000;
-      if (decoded.exp < currentTime) {
-        //logout user
-        store.dispatch(logoutUser());
-        //Redirect to login
-        window.location.href = "/";
-      }
-    }
-  }, [localStorage.jwtToken]);
   return (
     //BEM convention
     <Provider store={store}>
       <Router>
         <div className="app">
           <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/register">
-              <Register />
-            </Route>
-            <Route path="/profile/:id">
-              <Profile />
-            </Route>
-            <Route path="/chart/:id">
-              <Chart />
-            </Route>
-            <Route path="/">
-              {" "}
-              <Login />
-            </Route>
+            <Route path="/register" component={Register} />
+            <PrivateRoute exact path="/profile/:id" comp={Profile} />
+            <PrivateRoute exact path="/chart/:id" comp={Chart} />
+            <PrivateRoute exact path="/sellers" comp={SellerList} />
+            <Route path="/" component={Login} />
           </Switch>
         </div>
       </Router>
