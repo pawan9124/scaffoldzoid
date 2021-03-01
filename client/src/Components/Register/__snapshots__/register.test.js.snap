@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taking snap shot Taking the snapshot of the Component 1`] = `
+<div
+  className="register"
+  data-test="RegisterComponent"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    <img
+      alt="login_logo"
+      className="login__logo"
+      src="https://i.ibb.co/Yh5NhSw/Untitled-1-1.png"
+    />
+  </a>
+  <form>
+    <div
+      className="register__box"
+    >
+      <h3>
+        Create Account
+      </h3>
+      <div
+        className=" register_format register__name_box"
+      >
+        <label
+          className="reigster__name_label"
+          data-test="inputBoxComponent"
+          htmlFor=""
+        >
+          Username
+        </label>
+        <input
+          className="form-control register__name_input undefined "
+          data-test="InputBoxComponent"
+          name="username"
+          onChange={[Function]}
+          placeholder="Please enter user name"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className=" register_format register__name_box"
+      >
+        <label
+          className="reigster__name_label"
+          data-test="inputBoxComponent"
+          htmlFor=""
+        >
+          Email
+        </label>
+        <input
+          className="form-control register__name_input undefined "
+          data-test="InputBoxComponent"
+          name="email"
+          onChange={[Function]}
+          placeholder="Please enter email"
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className=" register_format register__name_box"
+      >
+        <label
+          className="reigster__name_label"
+          data-test="inputBoxComponent"
+          htmlFor=""
+        >
+          Password
+        </label>
+        <input
+          className="form-control register__name_input undefined "
+          data-test="InputBoxComponent"
+          name="password"
+          onChange={[Function]}
+          placeholder="Please enter password"
+          type="password"
+          value=""
+        />
+        <small>
+          Password must be greater than 6 digit
+        </small>
+      </div>
+      <div
+        className=" register_format register__name_box"
+      >
+        <label
+          className="reigster__name_label"
+          data-test="inputBoxComponent"
+          htmlFor=""
+        >
+          Retype Password
+        </label>
+        <input
+          className="form-control register__name_input undefined "
+          data-test="InputBoxComponent"
+          name="password"
+          onChange={[Function]}
+          placeholder="Please retype password"
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="register__seller"
+      >
+        <input
+          className="register__checkbox"
+          onClick={[Function]}
+          type="checkbox"
+          value={false}
+        />
+        <p>
+          Register as a seller
+        </p>
+      </div>
+      <div
+        className="register_format register__confirmation_box"
+      >
+        <button
+          className="btn  confirmation__button"
+          data-test="buttonComponent"
+          onClick={[Function]}
+        >
+          Sign Up
+          <span
+            className="btn-icon"
+          />
+        </button>
+      </div>
+      <div
+        className="register__validationErrors"
+        id="errormessage"
+      />
+      <div
+        className="register_format register__already"
+        id="registerMessage"
+      />
+      <div
+        className="register_format register__already"
+      >
+        <p>
+          Already have an account?
+        </p>
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Sign in ➤
+        </a>
+      </div>
+    </div>
+  </form>
+</div>
+`;

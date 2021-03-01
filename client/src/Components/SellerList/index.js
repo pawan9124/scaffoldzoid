@@ -4,7 +4,7 @@ import Card from "../Reusable/Cards";
 import { fetchAllProfiles } from "../../actions/profileActions";
 import "./style.css";
 
-const SellerList = () => {
+const SellerList = (props) => {
   const userDetails = useSelector((state) => state?.auth?.user);
   const allSellerProfiles = useSelector((state) => state?.profile?.allProfiles);
   const dispatchProps = useDispatch();
@@ -13,7 +13,7 @@ const SellerList = () => {
     dispatchProps(fetchAllProfiles());
   }, []);
   return (
-    <div className="seller_section">
+    <div className="seller_section" data-test="SellerListComponent">
       <h5>Hello, {userDetails.username}</h5>
       <div className="seller_list">
         {allSellerProfiles.map((profile, index) => (

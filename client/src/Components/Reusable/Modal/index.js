@@ -30,7 +30,10 @@ export default function SimpleModal(props) {
   };
 
   const body = (
-    <div className={`${classes.paper} modal_body_position`}>
+    <div
+      className={`${classes.paper} modal_body_position`}
+      data-test="ModalComponent"
+    >
       <h2 id="simple-modal-title">
         {props.eventType === "add" ? "Add" : "Edit"} Orange Types
       </h2>

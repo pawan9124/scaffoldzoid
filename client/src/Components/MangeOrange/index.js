@@ -61,7 +61,7 @@ const ModalBody = (props) => {
       handleOrangeEvent={handleOrangeEvent}
       eventType={props.eventType}
     >
-      <div>
+      <div data-test="ManageOrangeComponent">
         <InputBox
           type="text"
           value={orangeType}

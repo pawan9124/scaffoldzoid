@@ -56,7 +56,7 @@ const RateGrid = (props) => {
     dispatchProps(deleteRate(data._id, userDetails.id));
   };
   return (
-    <div>
+    <div data-test="RateGridComponent">
       <DataGrid
         columns={columns}
         rows={props.rows}

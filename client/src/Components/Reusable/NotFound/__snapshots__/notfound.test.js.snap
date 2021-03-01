@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taking snap shot Taking the snapshot of the Component 1`] = `
+<div
+  className="notfound_section"
+  data-test="NotFoundComponent"
+>
+  <h1
+    className="notfound_heading"
+  >
+    Not found
+  </h1>
+</div>
+`;

@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taking snap shot Taking the snapshot of the Component 1`] = `
+<div
+  className="profile_section"
+  data-test="ProfileComponent"
+>
+  <h4>
+    Mr/Ms. 
+  </h4>
+  <div
+    className="profile_about"
+  >
+    <div
+      className="profile_image_section"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle profile_image MuiAvatar-colorDefault"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiAvatar-fallback"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="profile_description_section"
+    >
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink={false}
+          htmlFor="outlined-basic"
+          id="outlined-basic-label"
+        >
+          Description
+        </label>
+        <div
+          className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+          onClick={[Function]}
+        >
+          <textarea
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+            defaultValue=""
+            disabled={false}
+            id="outlined-basic"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            required={false}
+            rows={5}
+          />
+          <fieldset
+            aria-hidden={true}
+            className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              className="PrivateNotchedOutline-legendLabelled-3"
+            >
+              <span>
+                Description
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="profile_chart"
+  >
+    <h2>
+      Chart Details
+    </h2>
+    <div
+      className="chart_section"
+      data-test="ChartComponent"
+    >
+      <div
+        className="chart__section_heading"
+      >
+        <div>
+          <h3>
+            Hello, 
+            ! 
+          </h3>
+          <p>
+            Manage your charts by adding, editing the existing ones and remove the types of oranges that are listed for the customers
+             
+          </p>
+        </div>
+        <p>
+          List of every type of best quality oranges available from this seller, order your favorite one.
+        </p>
+      </div>
+      <div
+        className="chart_button"
+      >
+        <button
+          className="btn  default__button profile_button btn-adjust"
+          data-test="buttonComponent"
+          onClick={[Function]}
+        >
+          Add Type
+          <span
+            className="btn-icon"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div
+        className="chat_grid"
+      >
+        <div
+          data-test="RateGridComponent"
+        >
+          <div
+            aria-colcount={2}
+            aria-rowcount={1}
+            className="rdg r104f42s700-canary36"
+            onScroll={[Function]}
+            role="grid"
+            style={
+              Object {
+                "--filter-row-height": "45px",
+                "--header-row-height": "35px",
+                "--row-height": "35px",
+                "--row-width": "160px",
+                "--template-columns": "80px 80px ",
+              }
+            }
+          >
+            <div
+              aria-rowindex={1}
+              className="rdg-header-row h1fquj5h700-canary36 h19m9p7h700-canary36"
+              role="row"
+            >
+              <div
+                aria-colindex={1}
+                className="rdg-cell c1wupbe700-canary36"
+                role="columnheader"
+                style={
+                  Object {
+                    "gridColumnStart": 1,
+                  }
+                }
+              >
+                Orange Type
+              </div>
+              <div
+                aria-colindex={2}
+                className="rdg-cell c1wupbe700-canary36"
+                role="columnheader"
+                style={
+                  Object {
+                    "gridColumnStart": 2,
+                  }
+                }
+              >
+                Orange Rate (Rs/Kg)
+              </div>
+            </div>
+            <div
+              className="rdg-focus-sink f7ly7s700-canary36"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              tabIndex={0}
+            />
+            <div
+              style={
+                Object {
+                  "height": 0,
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

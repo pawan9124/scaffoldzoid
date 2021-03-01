@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
+import PropTypes from "prop-types";
 import "./style.css";
 
 const useStyles = makeStyles({
@@ -27,7 +28,7 @@ export default function Cards(props) {
   const classes = useStyles();
 
   return (
-    <Card className={`${classes.root} card_style`}>
+    <Card className={`${classes.root} card_style`} data-test="cardComponent">
       <CardContent>
         <div className="card_section">
           <div className="card_image_section">
@@ -48,3 +49,7 @@ export default function Cards(props) {
     </Card>
   );
 }
+
+Cards.propTypes = {
+  user: PropTypes.object.isRequired,
+};

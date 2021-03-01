@@ -6,8 +6,8 @@ import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import jwt_decode from "jwt-decode";
-import Login from "./Components/Login/Login";
-import Register from "./Components/Register/Register";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
 import Profile from "./Components/Profile";
 import Chart from "./Components/Chart";
 import SellerList from "./Components/SellerList";
@@ -54,6 +54,9 @@ function App() {
           <Switch>
             <Route exact path="/" component={Login} />
           </Switch>
+          {/* <Switch>
+            <Route exact path="*" component={NotFound} />
+          </Switch> */}
         </div>
       </Router>
     </Provider>

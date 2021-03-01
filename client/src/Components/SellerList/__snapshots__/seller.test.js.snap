@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taking snap shot Taking the snapshot of the Component 1`] = `
+<div
+  className="seller_section"
+  data-test="SellerListComponent"
+>
+  <h5>
+    Hello, 
+  </h5>
+  <div
+    className="seller_list"
+  />
+</div>
+`;

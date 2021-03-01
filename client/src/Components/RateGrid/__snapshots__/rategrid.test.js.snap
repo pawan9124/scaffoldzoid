@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taking snap shot Taking the snapshot of the Component 1`] = `
+<div
+  data-test="RateGridComponent"
+>
+  <div
+    aria-colcount={2}
+    aria-rowcount={1}
+    className="rdg r104f42s700-canary36"
+    onScroll={[Function]}
+    role="grid"
+    style={
+      Object {
+        "--filter-row-height": "45px",
+        "--header-row-height": "35px",
+        "--row-height": "35px",
+        "--row-width": "160px",
+        "--template-columns": "80px 80px ",
+      }
+    }
+  >
+    <div
+      aria-rowindex={1}
+      className="rdg-header-row h1fquj5h700-canary36 h19m9p7h700-canary36"
+      role="row"
+    >
+      <div
+        aria-colindex={1}
+        className="rdg-cell c1wupbe700-canary36"
+        role="columnheader"
+        style={
+          Object {
+            "gridColumnStart": 1,
+          }
+        }
+      >
+        Orange Type
+      </div>
+      <div
+        aria-colindex={2}
+        className="rdg-cell c1wupbe700-canary36"
+        role="columnheader"
+        style={
+          Object {
+            "gridColumnStart": 2,
+          }
+        }
+      >
+        Orange Rate (Rs/Kg)
+      </div>
+    </div>
+    <div
+      className="rdg-focus-sink f7ly7s700-canary36"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+    />
+    <div
+      style={
+        Object {
+          "height": 0,
+        }
+      }
+    />
+  </div>
+</div>
+`;

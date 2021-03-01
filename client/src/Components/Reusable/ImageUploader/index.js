@@ -37,7 +37,7 @@ const ImageUploader = (props) => {
     });
   };
   return (
-    <div className="image-upload">
+    <div className="image-upload" data-test="imageUploaderComponent">
       <label htmlFor="icon-button-file" title="Upload image">
         <IconButton color="primary" component="span">
           <PhotoCamera />

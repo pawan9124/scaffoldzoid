@@ -10,9 +10,9 @@
 }
 .login__logo {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   object-fit: contain;
-  width: 100px;
+  width: 175px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -51,7 +51,7 @@
 }
 
 .login__signInButton {
-  background: #f0c14b;
+  background: #ffb733;
   border-radius: 2px;
   width: 100%;
   height: 30px;

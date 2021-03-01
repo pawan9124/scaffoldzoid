@@ -5,7 +5,11 @@ import "./style.css";
 function InputBox(props) {
   return (
     <>
-      <label htmlFor="" className="reigster__name_label">
+      <label
+        htmlFor=""
+        className="reigster__name_label"
+        data-test="inputBoxComponent"
+      >
         {props.label}
       </label>
       <input

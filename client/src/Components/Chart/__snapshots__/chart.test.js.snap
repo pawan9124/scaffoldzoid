@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taking snap shot Taking the snapshot of the Component 1`] = `
+<div
+  className="chart_section"
+  data-test="ChartComponent"
+>
+  <div
+    className="chart__section_heading"
+  >
+    <div>
+      <h3>
+        Hello, 
+        ! 
+      </h3>
+      <p>
+        Manage your charts by adding, editing the existing ones and remove the types of oranges that are listed for the customers
+         
+      </p>
+    </div>
+    <p>
+      List of every type of best quality oranges available from this seller, order your favorite one.
+    </p>
+  </div>
+  <div
+    className="chart_button"
+  >
+    <button
+      className="btn  default__button profile_button btn-adjust"
+      data-test="buttonComponent"
+      onClick={[Function]}
+    >
+      Add Type
+      <span
+        className="btn-icon"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+  <div
+    className="chat_grid"
+  >
+    <div
+      data-test="RateGridComponent"
+    >
+      <div
+        aria-colcount={2}
+        aria-rowcount={1}
+        className="rdg r104f42s700-canary36"
+        onScroll={[Function]}
+        role="grid"
+        style={
+          Object {
+            "--filter-row-height": "45px",
+            "--header-row-height": "35px",
+            "--row-height": "35px",
+            "--row-width": "160px",
+            "--template-columns": "80px 80px ",
+          }
+        }
+      >
+        <div
+          aria-rowindex={1}
+          className="rdg-header-row h1fquj5h700-canary36 h19m9p7h700-canary36"
+          role="row"
+        >
+          <div
+            aria-colindex={1}
+            className="rdg-cell c1wupbe700-canary36"
+            role="columnheader"
+            style={
+              Object {
+                "gridColumnStart": 1,
+              }
+            }
+          >
+            Orange Type
+          </div>
+          <div
+            aria-colindex={2}
+            className="rdg-cell c1wupbe700-canary36"
+            role="columnheader"
+            style={
+              Object {
+                "gridColumnStart": 2,
+              }
+            }
+          >
+            Orange Rate (Rs/Kg)
+          </div>
+        </div>
+        <div
+          className="rdg-focus-sink f7ly7s700-canary36"
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        />
+        <div
+          style={
+            Object {
+              "height": 0,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

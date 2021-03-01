@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taking snap shot Taking the snapshot of the Button Component 1`] = `
+<button
+  className="btn  btn-primary"
+  data-test="buttonComponent"
+  onClick={[MockFunction]}
+>
+  Test Action
+  <span
+    className="btn-icon"
+  />
+</button>
+`;

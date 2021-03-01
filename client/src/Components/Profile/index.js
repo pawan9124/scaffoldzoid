@@ -51,7 +51,9 @@ function Profile(props) {
       const fd = new FormData();
       fd.append("description", description);
       fd.append("user", userDetails.id);
-      fd.append("avatar", sentImageFiles[0][0]);
+      if (sentImageFiles[0] && sentImageFiles[0][0]) {
+        fd.append("avatar", sentImageFiles[0][0]);
+      }
       dispatchProps(saveProfile(fd, history));
     } else {
       setErrors(tempErrors);
@@ -59,7 +61,7 @@ function Profile(props) {
   };
 
   return (
-    <div className="profile_section">
+    <div className="profile_section" data-test="ProfileComponent">
       {userDetails?.isSeller && <h5>Hello, {userDetails?.username}</h5>}
       {!userDetails?.isSeller && (
         <h4>Mr/Ms. {currentProfile?.user?.username}</h4>

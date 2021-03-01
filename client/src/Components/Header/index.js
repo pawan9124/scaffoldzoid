@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import "./style.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "../../axios";
 import { withRouter } from "react-router-dom";
@@ -10,7 +10,6 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { logoutUser } from "../../actions/authActions";
 
 function Header(props) {
-  const history = useHistory();
   const userDetails = useSelector((state) => state.auth.user);
   const dispatchProps = useDispatch();
   const [autoComplete, setAutoComplete] = useState([]);
@@ -57,11 +56,13 @@ function Header(props) {
     props.history.push(`/profile/${currentId}`);
   };
   return (
-    <div className="header">
-      <Link to="/">
+    <div className="header" data-test="HeaderComponent">
+      <Link
+        to={userDetails?.isSeller ? `/profile/${userDetails?.id}` : "/sellers"}
+      >
         <img
           className="header__logo"
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+          src="https://i.ibb.co/Yh5NhSw/Untitled-1-1.png"
           alt="logo"
         />
       </Link>

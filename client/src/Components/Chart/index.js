@@ -25,7 +25,7 @@ function Chart(props) {
   }, [props.match.params.id]);
 
   return (
-    <div className="chart_section">
+    <div className="chart_section" data-test="ChartComponent">
       <div className="chart__section_heading">
         {props.match.path.indexOf("profile") === -1 && (
           <div>

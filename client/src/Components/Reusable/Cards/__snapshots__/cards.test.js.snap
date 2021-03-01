@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taking snap shot Taking the snapshot of the Card Component 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root makeStyles-root-1 card_style MuiPaper-elevation1 MuiPaper-rounded"
+  data-test="cardComponent"
+>
+  <div
+    className="MuiCardContent-root"
+  >
+    <div
+      className="card_section"
+    >
+      <div
+        className="card_image_section"
+      >
+        <a
+          href="/profile/uijjikk#dsdf"
+          onClick={[Function]}
+        >
+          <div
+            className="MuiAvatar-root MuiAvatar-circle card_image"
+          >
+            <img
+              alt="C"
+              className="MuiAvatar-img"
+              src="https://i.ibb.co/dkzZ2qr/selena.jpg"
+            />
+          </div>
+        </a>
+      </div>
+      <div
+        className="card_details"
+      >
+        <a
+          href="/profile/uijjikk#dsdf"
+          onClick={[Function]}
+        >
+          <div
+            className="card_username"
+          >
+            test_user
+          </div>
+        </a>
+        <div
+          className="card_description"
+        >
+          <p>
+            This is demo test...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

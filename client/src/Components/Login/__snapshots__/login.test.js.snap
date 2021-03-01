@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Taking snap shot Taking the snapshot of the Component 1`] = `
+<div
+  className="login"
+  data-test="LoginComponent"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    <img
+      alt="login_logo"
+      className="login__logo"
+      src="https://i.ibb.co/Yh5NhSw/Untitled-1-1.png"
+    />
+  </a>
+  <div
+    className="login__container"
+  >
+    <h1>
+      Sign-in
+    </h1>
+    <form>
+      <div>
+        <label
+          className="reigster__name_label"
+          data-test="inputBoxComponent"
+          htmlFor=""
+        >
+          E-mail
+        </label>
+        <input
+          className="form-control register__name_input undefined "
+          data-test="InputBoxComponent"
+          name="email"
+          onChange={[Function]}
+          placeholder="Please enter email"
+          type="email"
+          value=""
+        />
+      </div>
+      <br />
+      <div>
+        <label
+          className="reigster__name_label"
+          data-test="inputBoxComponent"
+          htmlFor=""
+        >
+          Password
+        </label>
+        <input
+          className="form-control register__name_input undefined "
+          data-test="InputBoxComponent"
+          name="password"
+          onChange={[Function]}
+          placeholder="Please enter password"
+          type="password"
+          value=""
+        />
+      </div>
+      <br />
+      <div>
+        <button
+          className="btn  login__signInButton"
+          data-test="buttonComponent"
+          onClick={[Function]}
+        >
+          Sign In
+          <span
+            className="btn-icon"
+          />
+        </button>
+      </div>
+    </form>
+    <br />
+    <div
+      className="register__validationErrors"
+      id="errormessage"
+    />
+    <p>
+      By signing-in you agree to the SCAFFOLDZOID INC.
+       
+      <a
+        href="#"
+      >
+        Conditions
+      </a>
+       of Use & Sale. Please see our Privacy Notice, our Cookies 
+      <a
+        href="#"
+      >
+        Notice
+      </a>
+       and our
+       
+      <a
+        href="#"
+      >
+        Interest-Based Ads
+      </a>
+       Notice.
+    </p>
+    <button
+      className="login__registerButton"
+      onClick={[Function]}
+    >
+      Create your SCAFFOLDZOID account
+    </button>
+  </div>
+</div>
+`;
