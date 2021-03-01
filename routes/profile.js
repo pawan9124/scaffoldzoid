@@ -44,7 +44,10 @@ router.post(
   async (req, res) => {
     try {
       let image = req.file ? req.file.path : "";
-      const newProfile = { ...req.body, avatar: image };
+      const newProfile = { ...req.body };
+      if (image) {
+        newProfile["avatar"] = image;
+      }
       const saveResponse = await Profile.findOneAndUpdate(
         { user: newProfile.user },
         { $set: newProfile },
