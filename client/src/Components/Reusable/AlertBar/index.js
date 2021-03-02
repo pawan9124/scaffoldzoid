@@ -31,8 +31,7 @@ export default function AlertBar() {
   const openAlert = alertStatus?.opentAlertBox;
 
   const handleClose = (event, reason) => {
-    if (event) {
-      event.preventDefault();
+    if (event || reason === "timeout") {
       if (reason === "clickaway") {
         return;
       }
@@ -48,7 +47,7 @@ export default function AlertBar() {
   };
   return (
     <div className={classes.root} data-test="AlertBarComponent">
-      <Snackbar open={openAlert} autoHideDuration={1} onClose={handleClose}>
+      <Snackbar open={openAlert} autoHideDuration={3000} onClose={handleClose}>
         <Alert
           onClose={(e, reason) => handleClose(e, reason)}
           severity={severity}

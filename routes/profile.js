@@ -5,6 +5,10 @@ import { v2 } from "cloudinary";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import multer from "multer";
 import keys from "../config/keys.js";
+import {
+  checkIsSellerAccess,
+  checkIsBuyerAccess,
+} from "../utils/rolePermission.js";
 
 /* Router configuration */
 const router = express.Router();
@@ -41,6 +45,7 @@ router.post(
   "/create",
   upload.single("avatar"),
   passport.authenticate("jwt", { session: false }),
+  checkIsSellerAccess,
   async (req, res) => {
     try {
       let image = req.file ? req.file.path : "";
@@ -67,6 +72,7 @@ router.post(
 router.get(
   "/getAllProfiles",
   passport.authenticate("jwt", { session: false }),
+  checkIsBuyerAccess,
   async (req, res) => {
     try {
       const allProfiles = await Profile.find({}).populate("user", ["username"]);

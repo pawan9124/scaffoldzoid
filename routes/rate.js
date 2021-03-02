@@ -1,6 +1,7 @@
 import express from "express";
 import Rate from "../models/Rate.js";
 import passport from "passport";
+import { checkIsSellerAccess } from "../utils/rolePermission.js";
 
 /* Router configuration */
 const router = express.Router();
@@ -27,6 +28,7 @@ const findUpatedRate = (userId) => {
 router.post(
   "/create",
   passport.authenticate("jwt", { session: false }),
+  checkIsSellerAccess,
   (req, res) => {
     try {
       const rate = new Rate({
@@ -44,6 +46,7 @@ router.post(
           res.status(500).json(error);
         });
     } catch (error) {
+      console.log();
       res.status(500).json(error);
     }
   }
@@ -57,6 +60,7 @@ router.post(
 router.put(
   "/update",
   passport.authenticate("jwt", { session: false }),
+  checkIsSellerAccess,
   (req, res) => {
     try {
       const rateObj = {
@@ -112,6 +116,7 @@ router.get(
 router.delete(
   "/delete",
   passport.authenticate("jwt", { session: false }),
+  checkIsSellerAccess,
   (req, res) => {
     try {
       Rate.deleteOne({ _id: req.query.id })
