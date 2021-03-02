@@ -72,5 +72,5 @@ app.get("*", (req, res) => {
 });
 
 /* Listeing to the port */
-app.listen(8000, () => console.log(`The port is listenting on :${8000}`));
+app.listen(port, () => console.log(`The port is listenting on :${port}`));
 export default app; // for testing

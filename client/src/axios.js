@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8000/";
+axios.defaults.baseURL = "https://scaffoldzoidasignment.herokuapp.com/";
 if (localStorage.jwtToken) {
   axios.defaults.headers.common["Authorization"] = localStorage.jwtToken;
 } else {
