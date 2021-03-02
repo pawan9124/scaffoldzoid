@@ -26,7 +26,7 @@ const findUpatedRate = (userId) => {
 
 router.post(
   "/create",
-  // passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     try {
       const rate = new Rate({

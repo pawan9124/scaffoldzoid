@@ -38,6 +38,7 @@ router.post("/register", (req, res) => {
             newUser
               .save()
               .then((user) => {
+                delete user.password;
                 res.status(200).json(user);
               })
               .catch((error) => {
@@ -64,39 +65,54 @@ router.post("/login", (req, res) => {
   const errors = {};
   try {
     //find the user
-    User.findOne({ email }).then((user) => {
-      if (!user) {
-        errors.email = "User not found in the system";
-        return res.status(400).json(errors);
-      }
-
-      //check the password
-      bcrypt.compare(password, user.password).then((isMatch) => {
-        if (isMatch) {
-          const payload = {
-            id: user.id,
-            username: user.username,
-            isSeller: user.isSeller,
-          };
-
-          //Sign the token
-          jwt.sign(
-            payload,
-            keys.secretKey,
-            { expiresIn: 3600 },
-            (err, token) => {
-              res.json({
-                success: true,
-                token: "Bearer " + token, //provide in concatenations
-              });
-            }
-          );
-        } else {
-          errors.password = "Incorrect password entered";
+    User.findOne({ email })
+      .then((user) => {
+        if (!user) {
+          errors.email = "User not found in the system";
           return res.status(400).json(errors);
         }
+
+        //check the password
+        bcrypt
+          .compare(password, user.password)
+          .then((isMatch) => {
+            if (isMatch) {
+              const payload = {
+                id: user.id,
+                username: user.username,
+                isSeller: user.isSeller,
+              };
+
+              //Sign the token
+              jwt.sign(
+                payload,
+                keys.secretKey,
+                { expiresIn: 3600 },
+                (err, token) => {
+                  res.json({
+                    success: true,
+                    token: "Bearer " + token, //provide in concatenations
+                  });
+                }
+              );
+            } else {
+              errors.password = "Incorrect password entered";
+              return res.status(400).json(errors);
+            }
+          })
+          .catch((error) => {
+            return res.status(400).json({
+              success: false,
+              errors: error,
+            });
+          });
+      })
+      .catch((error) => {
+        return res.status(400).json({
+          success: false,
+          errors: error,
+        });
       });
-    });
   } catch (error) {
     res.json({
       success: false,

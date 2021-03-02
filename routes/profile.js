@@ -53,6 +53,7 @@ router.post(
         { $set: newProfile },
         { sort: { points: 1 }, upsert: true, returnNewDocument: true }
       );
+      console.log("send", saveResponse);
       res.status(201).json(saveResponse);
     } catch (error) {
       res.status(500).json(error);

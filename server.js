@@ -28,9 +28,17 @@ app.use(bodyParser.json({ limit: "50mb", extended: true }));
 app.use(passport.initialize());
 app.use(cors());
 
+/* Working on the databases based on test and others*/
+let mongoURI = keys.mongoURI;
+if (process.env.NODE_ENV === "test") {
+  mongoURI = keys.testMongoURI;
+}
+
+console.log("MONGOUIR ____", mongoURI);
+
 /* Db configuration */
 mongoose
-  .connect(keys.mongoURI, {
+  .connect(mongoURI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -65,3 +73,4 @@ app.get("*", (req, res) => {
 
 /* Listeing to the port */
 app.listen(port, () => console.log(`The port is listenting on :${port}`));
+export default app; // for testing
