@@ -15,6 +15,11 @@ const SellerList = (props) => {
   return (
     <div className="seller_section" data-test="SellerListComponent">
       <h5>Hello, {userDetails.username}</h5>
+      <p className="sellers_list_desc">
+        Please browser through the list of the orange sellers and click on image
+        or name to view their profile to see list of types of oranges and their
+        rates.{" "}
+      </p>
       <div className="seller_list">
         {allSellerProfiles.map((profile, index) => (
           <Card key={profile._id} {...profile} />

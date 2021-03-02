@@ -8,7 +8,6 @@ opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.secretKey;
 
 const passportConfig = (passport) => {
-  console.log("PASSPORT CALLE");
   passport.use(
     new Strategy(opts, (jwt_payload, done) => {
       User.findById(jwt_payload.id)

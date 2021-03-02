@@ -5,7 +5,7 @@
 3. cd client `npm install`
 4. `npm start`
 5. Node+express run on localhost:8000
-6. React on localhost:3000 or depends upon availability
+6. React on localhost:3001/3000 or depends upon availability
 
 # Instruction to run test
 
