@@ -3,9 +3,9 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import AlertBar from "../Components/Reusable/AlertBar";
 
-//This action for auth is called when an actons happen
-
-//Register user
+/* 
+  Register of the user action from the register component
+*/
 export const registerUser = (userData, history) => (dispatch) => {
   try {
     axios
@@ -40,7 +40,7 @@ export const registerUser = (userData, history) => (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_ERRORS",
-      payload: error.response.data,
+      payload: error,
     });
     dispatch({
       type: "SET_ALERT_SUCCESS",
@@ -53,7 +53,9 @@ export const registerUser = (userData, history) => (dispatch) => {
   }
 };
 
-//Login - Get the User token and save in the local storage
+/* 
+  Login of the user action from the Login component
+*/
 export const loginUser = (userData, history) => (dispatch) => {
   try {
     axios
@@ -87,9 +89,10 @@ export const loginUser = (userData, history) => (dispatch) => {
         }
       })
       .catch((err) => {
+        console.log("ERRO", err, err.response.data);
         dispatch({
           type: "GET_ERRORS",
-          payload: err,
+          payload: err.response.data,
         });
         dispatch({
           type: "SET_ALERT_SUCCESS",
@@ -116,6 +119,9 @@ export const loginUser = (userData, history) => (dispatch) => {
   }
 };
 
+/* 
+  Set the Current user to get information
+*/
 export const setCurrentUser = (decoded) => {
   return {
     type: "SET_CURRENT_USER",
@@ -123,6 +129,9 @@ export const setCurrentUser = (decoded) => {
   };
 };
 
+/* 
+  Logout the user and remove local storage
+*/
 export const logoutUser = () => (dispatch) => {
   //Remove the current user from localstorga
   localStorage.removeItem("jwtToken");

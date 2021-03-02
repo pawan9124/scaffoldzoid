@@ -128,4 +128,25 @@ router.delete(
   }
 );
 
+/* 
+  @routes api/rate/search
+  @access private
+
+*/
+
+router.get(
+  "/search",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    try {
+      const response = await Rate.find({
+        $text: { $search: req.query.text },
+      });
+      res.status(200).json(response);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  }
+);
+
 export default router;

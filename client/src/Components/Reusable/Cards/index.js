@@ -49,7 +49,3 @@ export default function Cards(props) {
     </Card>
   );
 }
-
-Cards.propTypes = {
-  user: PropTypes.object.isRequired,
-};

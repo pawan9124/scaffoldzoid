@@ -53,7 +53,6 @@ router.post(
         { $set: newProfile },
         { sort: { points: 1 }, upsert: true, returnNewDocument: true }
       );
-      console.log("send", saveResponse);
       res.status(201).json(saveResponse);
     } catch (error) {
       res.status(500).json(error);
@@ -93,27 +92,6 @@ router.get(
       res.status(200).json(singleProfile);
     } catch (error) {
       res.status(500).json(error);
-    }
-  }
-);
-
-/* 
-  @routes api/profile/search
-  @access private
-
-*/
-
-router.get(
-  "/search",
-  passport.authenticate("jwt", { session: false }),
-  async (req, res) => {
-    try {
-      const response = await Profile.find({
-        $text: { $search: req.query.text },
-      });
-      res.status(200).json(response);
-    } catch (error) {
-      res.statu(500).json(error);
     }
   }
 );

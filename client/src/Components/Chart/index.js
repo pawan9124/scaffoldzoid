@@ -57,6 +57,7 @@ function Chart(props) {
       <div className="chat_grid">
         <RateGrid rows={allChartRate} />
       </div>
+      {/* Manage orange component will open modal and open event is send from button above to add */}
       {isOpen && (
         <MangeOrange isOpen={isOpen} setIsOpen={setIsOpen} eventType={"add"} />
       )}

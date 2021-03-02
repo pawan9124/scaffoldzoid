@@ -38,13 +38,9 @@ function Header(props) {
   //Handling the seraching of the product and listing in the list style
   const handleSearchProduct = async (e) => {
     //Calling the search for the getting the list of items suggestion
-    const response = await axios.get("/api/products/search", {
+    const response = await axios.get("/api/rates/search", {
       params: { text: e.target.value },
     });
-    console.log(
-      "HEADER &&&$$$$ IS THE RESPONSE------------------------------------------->",
-      response
-    );
     if (response.data.length > 0) {
       document.getElementById("autocomplete").style.display = "block";
       setAutoComplete(response.data);
@@ -76,8 +72,8 @@ function Header(props) {
         <ul id="autocomplete">
           {autoComplete.length > 0 &&
             autoComplete.map((sug) => (
-              <li key={sug._id} id={sug._id} onClick={handleAutoComplete}>
-                {sug.keywords}
+              <li key={sug._id} id={sug.user} onClick={handleAutoComplete}>
+                {sug.type}
               </li>
             ))}
         </ul>

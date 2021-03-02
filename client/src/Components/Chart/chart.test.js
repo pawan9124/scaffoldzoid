@@ -3,7 +3,6 @@ import { mount } from "enzyme";
 import { findByTestAttr, checkProps, createMockStore } from "../../testUtils";
 import Chart from "./index";
 import renderer from "react-test-renderer";
-import { withRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 

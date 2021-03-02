@@ -1,8 +1,8 @@
 import axios from "../axios";
 
-//This action for auth is called when an actons happen
-
-//Profile  user
+/* 
+  Save the profile action from the profile component 
+*/
 export const saveProfile = (userData, history) => (dispatch) => {
   try {
     axios
@@ -16,7 +16,7 @@ export const saveProfile = (userData, history) => (dispatch) => {
       .catch((error) => {
         dispatch({
           type: "GET_ERRORS",
-          payload: error,
+          payload: error.response.data,
         });
       });
     dispatch({
@@ -43,6 +43,9 @@ export const saveProfile = (userData, history) => (dispatch) => {
   }
 };
 
+/* 
+  Fetch profile by Id to display profile of a user
+*/
 export const fetchProfileById = (id) => async (dispatch) => {
   try {
     const result = await axios.get("/api/profiles/getSingleProfile", {
@@ -65,7 +68,7 @@ export const fetchProfileById = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_ERRORS",
-      payload: error,
+      payload: error.response.data,
     });
     dispatch({
       type: "SET_ALERT_SUCCESS",
@@ -78,6 +81,9 @@ export const fetchProfileById = (id) => async (dispatch) => {
   }
 };
 
+/* 
+  Fetch every profile to list all sellers
+*/
 export const fetchAllProfiles = () => async (dispatch) => {
   try {
     const result = await axios.get("/api/profiles/getAllProfiles");
@@ -96,7 +102,7 @@ export const fetchAllProfiles = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_ERRORS",
-      payload: error,
+      payload: error.response.data,
     });
     dispatch({
       type: "SET_ALERT_SUCCESS",

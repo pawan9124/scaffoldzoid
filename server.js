@@ -34,8 +34,6 @@ if (process.env.NODE_ENV === "test") {
   mongoURI = keys.testMongoURI;
 }
 
-console.log("MONGOUIR ____", mongoURI);
-
 /* Db configuration */
 mongoose
   .connect(mongoURI, {

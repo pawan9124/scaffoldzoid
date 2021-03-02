@@ -13,6 +13,7 @@ import Chart from "./Components/Chart";
 import SellerList from "./Components/SellerList";
 import PrivateRoute from "./validations/PrivateRoute";
 import AlertBar from "./Components/Reusable/AlertBar";
+import NotFound from "./Components/Reusable/NotFound";
 
 //This check runs before the useEffect or compoent did mount to set token and currentUser store contains isAuthenticated to check the private route
 if (localStorage.jwtToken) {
@@ -43,20 +44,12 @@ function App() {
         <div className="app">
           <Switch>
             <Route exact path="/register" component={Register} />
-          </Switch>
-          <Switch>
             <PrivateRoute exact path="/profile/:id" comp={Profile} />
-          </Switch>
-          <Switch>
             <PrivateRoute exact path="/chart/:id" comp={Chart} />
             <PrivateRoute exact path="/sellers" comp={SellerList} />
-          </Switch>
-          <Switch>
             <Route exact path="/" component={Login} />
+            <Route component={NotFound} />
           </Switch>
-          {/* <Switch>
-            <Route exact path="*" component={NotFound} />
-          </Switch> */}
           <AlertBar />
         </div>
       </Router>

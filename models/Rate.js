@@ -15,5 +15,9 @@ const Rate = new mongoose.Schema({
     required: true,
   },
 });
+Rate.index({
+  type: "text",
+  rate: "text",
+});
 
 export default mongoose.model("rates", Rate);

@@ -21,10 +21,8 @@ const useStyles = makeStyles((theme) => ({
 export default function AlertBar() {
   const classes = useStyles();
   const dispatchProps = useDispatch();
-  let flag = false;
 
   let alertStatus = useSelector((state) => {
-    console.log("SET_ALERT_SUCCESS", state);
     return state.alert.alert;
   });
 

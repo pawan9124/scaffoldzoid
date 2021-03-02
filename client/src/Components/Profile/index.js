@@ -59,7 +59,6 @@ function Profile(props) {
       setErrors(tempErrors);
     }
   };
-  console.log("imageFiles", imageFiles);
   return (
     <div className="profile_section" data-test="ProfileComponent">
       {userDetails?.isSeller && <h5>Hello, {userDetails?.username}</h5>}

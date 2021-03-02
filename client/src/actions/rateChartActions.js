@@ -1,8 +1,8 @@
 import axios from "../axios";
 
-//This action for auth is called when an actons happen
-
-//Profile  user
+/* 
+  Add rate chart for the seller from chart component
+*/
 export const addRate = (userData, history) => (dispatch) => {
   try {
     axios
@@ -24,7 +24,7 @@ export const addRate = (userData, history) => (dispatch) => {
       .catch((error) => {
         dispatch({
           type: "GET_ERRORS",
-          payload: error,
+          payload: error.response.data,
         });
         dispatch({
           type: "SET_ALERT_SUCCESS",
@@ -51,6 +51,9 @@ export const addRate = (userData, history) => (dispatch) => {
   }
 };
 
+/* 
+  Fetch rate chart for the seller from chart component
+*/
 export const fetchRateChart = (user) => async (dispatch) => {
   try {
     const result = await axios.get("/api/rates/get", {
@@ -73,7 +76,7 @@ export const fetchRateChart = (user) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_ERRORS",
-      payload: error,
+      payload: error.response.data,
     });
     dispatch({
       type: "SET_ALERT_SUCCESS",
@@ -86,6 +89,9 @@ export const fetchRateChart = (user) => async (dispatch) => {
   }
 };
 
+/* 
+  Update rate chart for the seller from chart component
+*/
 export const updateRate = (updateData) => async (dispatch) => {
   try {
     const result = await axios.put("/api/rates/update", updateData);
@@ -104,7 +110,7 @@ export const updateRate = (updateData) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_ERRORS",
-      payload: error,
+      payload: error.response.data,
     });
     dispatch({
       type: "SET_ALERT_SUCCESS",
@@ -116,6 +122,10 @@ export const updateRate = (updateData) => async (dispatch) => {
     });
   }
 };
+
+/* 
+  Delete chart for the seller from chart component
+*/
 
 export const deleteRate = (id, user) => async (dispatch) => {
   try {
@@ -140,7 +150,7 @@ export const deleteRate = (id, user) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_ERRORS",
-      payload: error,
+      payload: error.response.data,
     });
     dispatch({
       type: "SET_ALERT_SUCCESS",
