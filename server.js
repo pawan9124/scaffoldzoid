@@ -63,7 +63,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "http://localhost:8000",
+      target: "https://scaffoldzoidasignment.herokuapp.com/",
       changeOrigin: true,
     })
   );
