@@ -10,7 +10,6 @@ import userAuth from "./routes/userAuth.js";
 import profile from "./routes/profile.js";
 import rate from "./routes/rate.js";
 import mocks from "./mocks/index.js";
-import { createProxyMiddleware } from "http-proxy-middleware";
 
 /* App configuration */
 const app = express();
@@ -60,13 +59,6 @@ app.use("/api/rates", rate);
 
 /* Static folder configuration */
 if (process.env.NODE_ENV === "production") {
-  app.use(
-    "/api",
-    createProxyMiddleware({
-      target: "https://scaffoldzoidasignment.herokuapp.com/",
-      changeOrigin: true,
-    })
-  );
   app.use(express.static("client/build"));
 
   app.use("*", (req, res) => {
@@ -80,5 +72,5 @@ app.get("*", (req, res) => {
 });
 
 /* Listeing to the port */
-app.listen(port, () => console.log(`The port is listenting on :${port}`));
+app.listen(8000, () => console.log(`The port is listenting on :${8000}`));
 export default app; // for testing
