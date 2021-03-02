@@ -10,6 +10,7 @@ import userAuth from "./routes/userAuth.js";
 import profile from "./routes/profile.js";
 import rate from "./routes/rate.js";
 import mocks from "./mocks/index.js";
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 /* App configuration */
 const app = express();
@@ -59,6 +60,13 @@ app.use("/api/rates", rate);
 
 /* Static folder configuration */
 if (process.env.NODE_ENV === "production") {
+  app.use(
+    "/api",
+    createProxyMiddleware({
+      target: "http://localhost:8000",
+      changeOrigin: true,
+    })
+  );
   app.use(express.static("client/build"));
 
   app.use("*", (req, res) => {
