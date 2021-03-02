@@ -9,6 +9,7 @@ import passportConfig from "./config/passport.js";
 import userAuth from "./routes/userAuth.js";
 import profile from "./routes/profile.js";
 import rate from "./routes/rate.js";
+import mocks from "./mocks/index.js";
 
 /* App configuration */
 const app = express();
@@ -43,6 +44,7 @@ mongoose
   })
   .then((err, db) => {
     console.log("Mongodb connected");
+    // mocks(); //use to generate fake data
   })
   .catch((error) => console.log(error));
 
