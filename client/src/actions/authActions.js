@@ -1,6 +1,7 @@
 import axios from "../axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import AlertBar from "../Components/Reusable/AlertBar";
 
 //This action for auth is called when an actons happen
 
@@ -13,17 +14,41 @@ export const registerUser = (userData, history) => (dispatch) => {
         document.getElementById("registerMessage").innerHTML =
           "User Registered Successfully!";
         dispatch(loginUser(userData, history));
+        dispatch({
+          type: "SET_ALERT_SUCCESS",
+          payload: {
+            isAlertSuccess: true,
+            opentAlertBox: true,
+            message: "Registration Successful!",
+          },
+        });
       })
       .catch((error) => {
         dispatch({
           type: "GET_ERRORS",
           payload: error.response.data,
         });
+        dispatch({
+          type: "SET_ALERT_SUCCESS",
+          payload: {
+            isAlertSuccess: false,
+            opentAlertBox: true,
+            message: "Registration Failed!",
+          },
+        });
       });
   } catch (error) {
     dispatch({
       type: "GET_ERRORS",
       payload: error.response.data,
+    });
+    dispatch({
+      type: "SET_ALERT_SUCCESS",
+      payload: {
+        isAlertSuccess: false,
+        opentAlertBox: true,
+        message: "Registration Failed!",
+      },
     });
   }
 };
@@ -44,6 +69,14 @@ export const loginUser = (userData, history) => (dispatch) => {
 
         //Set the user
         dispatch(setCurrentUser(decoded));
+        dispatch({
+          type: "SET_ALERT_SUCCESS",
+          payload: {
+            isAlertSuccess: true,
+            opentAlertBox: true,
+            message: "Login Successful",
+          },
+        });
         /* Checking if the user is seller or not */
         if (decoded.isSeller) {
           setTimeout(() => {
@@ -56,13 +89,29 @@ export const loginUser = (userData, history) => (dispatch) => {
       .catch((err) => {
         dispatch({
           type: "GET_ERRORS",
-          payload: err.response.data,
+          payload: err,
+        });
+        dispatch({
+          type: "SET_ALERT_SUCCESS",
+          payload: {
+            isAlertSuccess: false,
+            opentAlertBox: true,
+            message: "Login Failed!",
+          },
         });
       });
   } catch (error) {
     dispatch({
       type: "GET_ERRORS",
-      payload: error.response.data,
+      payload: error,
+    });
+    dispatch({
+      type: "SET_ALERT_SUCCESS",
+      payload: {
+        isAlertSuccess: false,
+        opentAlertBox: true,
+        message: "Login Failed!",
+      },
     });
   }
 };
