@@ -101,7 +101,9 @@ function Profile(props) {
             fullWidth={true}
             defaultValue={description}
             InputProps={{
-              readOnly: !userDetails?.isSeller,
+              readOnly:
+                !userDetails?.isSeller ||
+                props.match.params.id !== userDetails?.id,
             }}
             onChange={(e) => setDescription(e.target.value)}
           />
