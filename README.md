@@ -18,3 +18,10 @@
 
 1. cd client
 2. `run npm test`
+
+# Screen shot
+![alt text](https://github.com/pawan9124/scaffoldzoid/blob/master/screenshot/landing.png)
+![alt text](https://github.com/pawan9124/scaffoldzoid/blob/master/screenshot/profile.png)
+![alt text](https://github.com/pawan9124/scaffoldzoid/blob/master/screenshot/rate.png)
+![alt text](https://github.com/pawan9124/scaffoldzoid/blob/master/screenshot/register.png)
+![alt text](https://github.com/pawan9124/scaffoldzoid/blob/master/screenshot/sellers.png)
