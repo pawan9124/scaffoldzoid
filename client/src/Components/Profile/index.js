@@ -84,12 +84,13 @@ function Profile(props) {
             className="profile_image"
           />
           {/* Seller to upload image */}
-          {userDetails?.isSeller && (
-            <ImageUploader
-              setSentImageFiles={setSentImageFiles}
-              setImageFiles={setImageFiles}
-            />
-          )}
+          {userDetails?.isSeller &&
+            props.match.params.id === userDetails?.id && (
+              <ImageUploader
+                setSentImageFiles={setSentImageFiles}
+                setImageFiles={setImageFiles}
+              />
+            )}
         </div>
         <div className="profile_description_section">
           <TextField
