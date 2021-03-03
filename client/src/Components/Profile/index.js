@@ -66,7 +66,7 @@ function Profile(props) {
         <h4>Mr/Ms. {currentProfile?.user?.username}</h4>
       )}
       {/* Profile about section */}
-      {userDetails?.isSeller && (
+      {userDetails?.isSeller && props.match.params.id === userDetails?.id && (
         <div className="profile_name_section">
           <Button
             type="submit"
